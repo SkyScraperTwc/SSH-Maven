@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+ 
+<struts>
+	<package name="file_package" namespace="/file" extends="struts-default" strict-method-invocation="false">
+
+		<action name="upload" class="fileUploadAction">
+			<result name="success">
+				/index.jsp
+			</result>
+		</action>
+
+		<action name="download" class="fileDownloadAction">
+			<!--以流的方式返回  -->
+			<result name="success" type="stream">
+				<!--以附件方式下载，downloadFileName对应Action类getDownloadFileName() -->
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>
+				<!--文件流  -->
+				<param name="contentType">application/octet-stream;charset=utf-8</param>
+				<!--下载源  -->
+				<param name="inputName">inputStream</param>
+				<!--缓冲流大小  -->
+				<param name="bufferSize">8192</param>
+			</result>
+		</action>
+
+	</package>
+</struts> 
+     

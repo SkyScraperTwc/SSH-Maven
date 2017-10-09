@@ -3,23 +3,8 @@
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
  
-<struts>   
-	<package name="action" namespace="/user" extends="struts-default" strict-method-invocation="false">
-
-	   <action name="userAction_*" class="userAction" method="{1}">
-	   			<result name="list">
-	   					/WEB-INF/views/back/userList.jsp
-	   			</result>
-	   			<result name="redirectList" type="redirect">
-	   					/user/userAction_list
-	   			</result>
-	   			<result name="toAdd">
-	   					/WEB-INF/views/back/userAdd.jsp
-	   			</result>
-	   			<result name="toEdit">
-	   					/WEB-INF/views/back/userEdit.jsp
-	   			</result>
-	   </action>
-	</package>
+<struts>
+	<include file="struts2/file.xml"/>
+	<include file="struts2/user.xml"/>
 </struts>    
                      
